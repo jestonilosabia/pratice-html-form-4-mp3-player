@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MP3 Player</title>
+</head>
+<body>
+  <form id="mp3-form" method="GET" action="your_html_file.html">
+    <div>
+    <h1> MP3 Player </h1>
+      <label for="song">Song:</label>
+      <select id="song" name="song">
+        <option value="song1">Song 1</option>
+        <option value="song2">Song 2</option>
+        <option value="song3" selected>Song 3</option>
+      </select>
+    </div>
+    <div>
+      <label for="vol">Volume:</label>
+      <input type="range" id="vol" name="vol" min="10" max="80" step="1" value="54">
+    </div>
+    <br>
+    <input type="submit" value="Play">
+  </form>
+
+  <script>
+    var mp3Form = document.getElementById('mp3-form');
+    mp3Form.addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent the form from submitting
+
+      // Get the selected song and volume value
+      var selectedSong = document.getElementById('song').value;
+      var volume = document.getElementById('vol').value;
+
+      // Build the URL with the selected song and volume data
+      var url = 'your_html_file.html?song=' + encodeURIComponent(selectedSong) + '&vol=' + encodeURIComponent(volume);
+
+      // Redirect to the URL
+      window.location.href = url;
+    });
+  </script>
+</body>
+</html>
